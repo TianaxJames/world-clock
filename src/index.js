@@ -6,7 +6,7 @@ setInterval(function () {
 
   pragueDateElement.innerHTML = pragueTime.format("MMMM Do YYYY");
   pragueTimeElement.innerHTML = pragueTime.format(
-    "h:mm:ss:SSS [<small>]A[</small>]"
+    "h:mm:ss:SS [<small>]A[</small>]"
   );
 }, 1);
 
@@ -18,7 +18,7 @@ setInterval(function () {
 
   cairoDateElement.innerHTML = cairoTime.format("MMMM Do YYYY");
   cairoTimeElement.innerHTML = cairoTime.format(
-    "h:mm:ss:SSS [<small>]A[</small>]"
+    "h:mm:ss:SS [<small>]A[</small>]"
   );
 }, 1);
 
@@ -30,6 +30,26 @@ setInterval(function () {
 
   ochoRiosDateElement.innerHTML = ochoRiosTime.format("MMMM Do YYYY");
   ochoRiosTimeElement.innerHTML = ochoRiosTime.format(
-    "h:mm:ss:SSS [<small>]A[</small>]"
+    "h:mm:ss:SS [<small>]A[</small>]"
   );
 }, 1);
+
+function updateCity(event) {
+  let cityTimeZone = event.target.value;
+  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+  let cityTime = moment().tz(cityTimeZone);
+  let citiesElement = document.querySelector("#cities");
+  citiesElement.innerHTML = `<div class="city">
+        <div>
+            <h2> ${cityName}</h2>
+            <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+        </div>
+        <div class="time">${cityTime.format(
+          "h:mm:ss:SS "
+        )}<small>${cityTime.format("A")}</small>
+  </div>`;
+}
+
+let citiesSelectElement = document.querySelector("#city");
+
+citiesSelectElement.addEventListener("change", updateCity);
