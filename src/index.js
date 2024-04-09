@@ -1,11 +1,11 @@
 setInterval(function () {
-  let pragueElement = document.querySelector("#prague");
-  let pragueDateElement = pragueElement.querySelector(".date");
-  let pragueTimeElement = pragueElement.querySelector(".time");
-  let pragueTime = moment().tz("Europe/Prague");
+  let chiangMaiElement = document.querySelector("#chiang-mai");
+  let chiangMaiDateElement = chiangMaiElement.querySelector(".date");
+  let chiangMaiTimeElement = chiangMaiElement.querySelector(".time");
+  let chiangMaiTime = moment().tz("Asia/Bangkok");
 
-  pragueDateElement.innerHTML = pragueTime.format("MMMM Do YYYY");
-  pragueTimeElement.innerHTML = pragueTime.format(
+  chiangMaiDateElement.innerHTML = chiangMaiTime.format("MMMM Do YYYY");
+  chiangMaiTimeElement.innerHTML = chiangMaiTime.format(
     "h:mm:ss:SS [<small>]A[</small>]"
   );
 }, 1);
